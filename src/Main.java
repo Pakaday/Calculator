@@ -5,10 +5,18 @@ public class Main {
         Scanner userInput = new Scanner(System.in);
 
         System.out.println("Input first number: ");
+        while (!userInput.hasNextInt()) {
+            System.out.println("Please enter a valid number.");
+            userInput.next();
+        }
         int firstNumber = userInput.nextInt();
 
         System.out.println("Input second number: ");
-        int secondNumber= userInput.nextInt();
+        while (!userInput.hasNextInt()) {
+            System.out.println("Please enter a valid number.");
+            userInput.next();
+        }
+        int secondNumber = userInput.nextInt();
 
         System.out.println("Choose your operation (+, -, *, /):");
         char userOperation = userInput.next().charAt(0);
