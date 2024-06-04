@@ -18,11 +18,11 @@ public class Main {
         }
         int secondNumber = userInput.nextInt();
 
-        System.out.println("Choose your operation (+, -, *, /):");
+        System.out.println("Choose your operation (+, -, *, /, %):");
         char userOperation = userInput.next().charAt(0);
 
-        while (!(userOperation == '+' || userOperation == '-' || userOperation == '*' || userOperation == '/')) {
-            System.out.println("Please choose an operation (+, -, *, /):");
+        while (!(userOperation == '+' || userOperation == '-' || userOperation == '*' || userOperation == '/' || userOperation == '%')) {
+            System.out.println("Please choose an operation (+, -, *, /, %):");
             userOperation = userInput.next().charAt(0);
         }
 
@@ -51,6 +51,8 @@ public class Main {
                 return firstNumber / secondNumber;
             default:
                 throw new IllegalArgumentException("Invalid operation");
+            case '%':
+                return firstNumber % secondNumber;
         }
     }
 }
