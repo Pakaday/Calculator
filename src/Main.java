@@ -18,11 +18,11 @@ public class Main {
         }
         int secondNumber = userInput.nextInt();
 
-        System.out.println("Choose your operation (+, -, *, /, %):");
+        System.out.println("Choose your operation (+, -, *, /, %): ");
         char userOperation = userInput.next().charAt(0);
 
         while (!(userOperation == '+' || userOperation == '-' || userOperation == '*' || userOperation == '/' || userOperation == '%')) {
-            System.out.println("Please choose an operation (+, -, *, /, %):");
+            System.out.println("Please choose an operation (+, -, *, /, %): ");
             userOperation = userInput.next().charAt(0);
         }
 
@@ -37,22 +37,18 @@ public class Main {
     }
 
     public static int performOperation(int firstNumber, int secondNumber, char operation) {
-        switch (operation) {
-            case '+':
-                return firstNumber + secondNumber;
-            case '-':
-                return firstNumber - secondNumber;
-            case '*':
-                return firstNumber * secondNumber;
-            case '/':
+        return switch (operation) {
+            case '+' -> firstNumber + secondNumber;
+            case '-' -> firstNumber - secondNumber;
+            case '*' -> firstNumber * secondNumber;
+            case '/' -> {
                 if (secondNumber == 0) {
                     throw new IllegalArgumentException("Divide by zero not allowed");
                 }
-                return firstNumber / secondNumber;
-            default:
-                throw new IllegalArgumentException("Invalid operation");
-            case '%':
-                return firstNumber % secondNumber;
-        }
+                yield firstNumber / secondNumber;
+            }
+            case '%' -> firstNumber % secondNumber;
+            default -> throw new IllegalArgumentException("Invalid operation");
+        };
     }
 }
